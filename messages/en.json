@@ -160,7 +160,10 @@
     "activationNote": "Activation and equipment fees are negotiated individually.",
     "popular": "Most popular",
     "choose": "Choose",
-    "save": "You save"
+    "save": "You save",
+    "from": "from",
+    "currency": "€",
+    "perMonth": "/month"
   },
   "AboutPage": {
     "title": "About NETPLUS PETRICH",
