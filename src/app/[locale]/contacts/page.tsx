@@ -105,14 +105,16 @@ export default async function ContactsPage({ params }: Props) {
               })}
             </div>
 
-            {/* Карта (placeholder embed) */}
-            <div className="mt-6 overflow-hidden rounded-2xl border border-ink-100">
+            {/* Карта — Google Maps embed (без API ключ, надеждно) */}
+            <div className="group relative mt-6 overflow-hidden rounded-2xl border border-ink-100 shadow-soft">
               <div className="relative aspect-[4/3] bg-ink-100">
                 <iframe
                   title={t("mapTitle")}
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=23.18%2C41.55%2C23.30%2C41.62&layer=mapnik&marker=41.5746%2C23.2056"
+                  src="https://maps.google.com/maps?width=100%25&height=400&hl=en&q=Petrich%2C%20Bulgaria&t=&z=13&ie=UTF8&iwloc=B&output=embed"
                   className="h-full w-full border-0"
                   loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
                 />
               </div>
             </div>
