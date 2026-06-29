@@ -1,0 +1,227 @@
+// Prisma schema за НЕТПЮС ПЕТРИЧ
+//
+// За локална разработка ползваме SQLite (файлова база — без инсталация).
+// За production променете provider на "postgresql" и DATABASE_URL.
+// Схемата е идентична — само datasource се променя.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ===== Акаунти и автентикация =====
+
+enum Role {
+  CLIENT
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  phone         String?
+  address       String?
+  password      String
+  role          Role      @default(CLIENT)
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // NextAuth relations
+  accounts Account[]
+  sessions Session[]
+
+  // Бизнес данни
+  serviceRequests ServiceRequest[]
+  supportTickets  SupportTicket[]
+  feedbacks       Feedback[]
+  ticketMessages  TicketMessage[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ===== Бизнес модели =====
+
+enum RequestStatus {
+  NEW
+  IN_PROGRESS
+  CONTACTED
+  DONE
+  CANCELLED
+}
+
+enum RequestType {
+  GPON
+  GDN
+  UNITV
+  COMBO
+  MOVE
+  UPGRADE
+  OTHER
+}
+
+/// Заявка за нова услуга или промяна (от публичната форма или портала).
+model ServiceRequest {
+  id         String        @id @default(cuid())
+  userId     String?       // null ако е от публична форма (нерегистриран)
+  // Контакт (за публични заявки без user)
+  name       String
+  phone      String
+  email      String?
+  address    String
+  type       RequestType
+  notes      String?
+  status     RequestStatus @default(NEW)
+  adminNotes String?       // вътрешни бележки от екипа
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("service_requests")
+}
+
+enum TicketStatus {
+  OPEN
+  ANSWERED
+  WAITING
+  RESOLVED
+  CLOSED
+}
+
+enum TicketCategory {
+  INTERNET
+  TV
+  BILLING
+  EQUIPMENT
+  OTHER
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+/// Сигнал за проблем от клиент.
+model SupportTicket {
+  id          String         @id @default(cuid())
+  userId      String
+  category    TicketCategory
+  priority    TicketPriority @default(MEDIUM)
+  subject     String
+  description String
+  status      TicketStatus   @default(OPEN)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages TicketMessage[]
+
+  @@index([status])
+  @@index([userId])
+  @@map("support_tickets")
+}
+
+/// Съобщение в комуникацията по сигнал.
+model TicketMessage {
+  id        String   @id @default(cuid())
+  ticketId  String
+  authorId  String?
+  // "client" | "staff" — кой е написал (за Guest съобщения)
+  authorRole String  @default("client")
+  body       String
+  createdAt  DateTime @default(now())
+
+  ticket SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  author User?          @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([ticketId])
+  @@map("ticket_messages")
+}
+
+/// Новина / съобщение (двуезично).
+model News {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  category    String   @default("Новина")
+  titleBg     String
+  titleEn     String?
+  excerptBg   String
+  excerptEn   String?
+  contentBg   String
+  contentEn   String?
+  coverImage  String?
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published])
+  @@index([createdAt])
+  @@map("news")
+}
+
+/// Обратна връзка / отзив от клиент.
+model Feedback {
+  id        String   @id @default(cuid())
+  userId    String?
+  name      String   // за нерегистрирани
+  rating    Int      // 1–5
+  comment   String?
+  approved  Boolean  @default(false) // само одобрените се показват публично
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([approved])
+  @@map("feedbacks")
+}

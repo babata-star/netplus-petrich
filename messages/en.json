@@ -1,0 +1,277 @@
+{
+  "Meta": {
+    "siteName": "NETPLUS PETRICH",
+    "tagline": "Fiber internet & television"
+  },
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "news": "News",
+    "about": "About",
+    "contacts": "Contacts",
+    "portal": "Client portal",
+    "login": "Log in",
+    "getConnected": "Get connected",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Services": {
+    "gpon": "Fiber internet",
+    "gdn": "Digital TV",
+    "unitv": "Interactive TV",
+    "dropdownLabel": "Our services"
+  },
+  "Hero": {
+    "badge": "Local provider in Petrich",
+    "title": "Fast internet. Real support. Local people.",
+    "titleHighlight": "Local people.",
+    "subtitle": "Fiber internet (GPON), digital television (GDN) and interactive TV (UNITV) for homes and businesses in Petrich and the region.",
+    "ctaPrimary": "Check coverage",
+    "ctaSecondary": "See plans",
+    "stat1Value": "up to 1000",
+    "stat1Label": "Mbps speed",
+    "stat2Value": "24/7",
+    "stat2Label": "real support",
+    "stat3Value": "100%",
+    "stat3Label": "fiber network"
+  },
+  "TrustBar": {
+    "label": "Why people choose NETPLUS"
+  },
+  "ServicesPreview": {
+    "title": "Everything a modern connection needs",
+    "subtitle": "Three services under one roof — internet, television and interactive TV, with a single support interface.",
+    "learnMore": "Learn more",
+    "gpon": {
+      "title": "Fiber internet (GPON)",
+      "desc": "Symmetric fiber straight to your home. Low latency, stability and speeds up to 1000 Mbps.",
+      "points": ["Symmetric speed", "GPON technology", "No copper cables"]
+    },
+    "gdn": {
+      "title": "Digital television (GDN)",
+      "desc": "Hundreds of channels in HD quality. Sports, movies, kids and news — all in one.",
+      "points": ["HD quality", "200+ channels", "Electronic guide"]
+    },
+    "unitv": {
+      "title": "Interactive TV (UNITV)",
+      "desc": "Pause, rewind and record TV. Watch on your TV, phone or tablet.",
+      "points": ["Record & pause", "VoD library", "Multi-device"]
+    }
+  },
+  "Features": {
+    "title": "A constant connection with customers",
+    "subtitle": "We don't just sell internet — we're here when you need us.",
+    "f1Title": "Real-time tickets",
+    "f1Desc": "Report a problem from the portal and track its status — no phone call needed.",
+    "f2Title": "News & announcements",
+    "f2Desc": "Always informed about promotions, maintenance windows and network updates.",
+    "f3Title": "Email notifications",
+    "f3Desc": "Get confirmation and replies for every request or ticket.",
+    "f4Title": "Client portal 24/7",
+    "f4Desc": "Round-the-clock access to your services, requests and billing from any device.",
+    "f5Title": "Feedback",
+    "f5Desc": "Rate the service and help us get better.",
+    "f6Title": "Quick contact",
+    "f6Desc": "A request form, phone and email — always in one place."
+  },
+  "Coverage": {
+    "title": "Coverage in Petrich and the region",
+    "subtitle": "Check whether your address is on our fiber network.",
+    "placeholder": "Enter your address...",
+    "button": "Check",
+    "found": "Great! Your address is on our network.",
+    "notFound": "We don't have coverage at this address yet. Contact us for details.",
+    "check": "Check"
+  },
+  "PricingPreview": {
+    "title": "Plans for every user",
+    "subtitle": "Transparent pricing with no hidden fees. Choose the speed that fits you.",
+    "popular": "Most popular",
+    "currency": "€",
+    "perMonth": "/month",
+    "from": "from",
+    "choose": "Choose plan",
+    "viewAll": "View all plans"
+  },
+  "NewsPreview": {
+    "title": "Latest news",
+    "subtitle": "Promotions, maintenance notices and current offers.",
+    "readMore": "Read",
+    "allNews": "All news",
+    "empty": "No news published yet."
+  },
+  "Reviews": {
+    "title": "What our customers say",
+    "subtitle": "Real reviews from people in Petrich."
+  },
+  "CtaSection": {
+    "title": "Ready for faster internet?",
+    "subtitle": "Submit a request today and our team will contact you within one business day.",
+    "button": "Submit a request",
+    "call": "Or call us"
+  },
+  "Footer": {
+    "tagline": "Local provider of fiber internet and television in Petrich.",
+    "servicesTitle": "Services",
+    "companyTitle": "Company",
+    "supportTitle": "Support",
+    "contactTitle": "Contact",
+    "rights": "All rights reserved.",
+    "address": "2850 Petrich, 1 Bratya Miladinovi St.",
+    "phone": "Phone",
+    "email": "Email",
+    "hours": "Support",
+    "hoursValue": "On-call team 24/7",
+    "quickLinks": "Quick links",
+    "reportProblem": "Report a problem",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service"
+  },
+  "LanguageSwitcher": {
+    "label": "Change language",
+    "bg": "Bulgarian",
+    "en": "English"
+  },
+  "PageHero": {
+    "home": "Home"
+  },
+  "ServicesPage": {
+    "title": "Our services",
+    "subtitle": "Fiber internet, digital and interactive television — everything for your connection in one place.",
+    "gponLong": "Fiber internet over GPON technology brings the fiber straight to your home. That means symmetric speed, low latency and stability that copper cables can never offer.",
+    "gdnLong": "GDN (Galaxy Digital Network) digital television brings you hundreds of HD channels — sports, movies, documentaries, kids programs and news from around the world.",
+    "unitvLong": "UNITV interactive television changes the way you watch TV — pause, rewind, record and watch on your TV, phone or tablet, whenever and wherever you want.",
+    "speeds": "Speeds",
+    "coverage": "Coverage",
+    "technology": "Technology",
+    "channels": "Channels",
+    "quality": "Quality",
+    "features": "Key benefits",
+    "getStarted": "Request service"
+  },
+  "PricingPage": {
+    "title": "Pricing & plans",
+    "subtitle": "Transparent pricing with no hidden fees. Choose the speed that fits your home or business.",
+    "internetTitle": "Fiber internet",
+    "tvTitle": "Television",
+    "comboTitle": "Combo offers",
+    "note": "Prices are indicative and will be filled with NETPLUS's real tariffs.",
+    "activationNote": "Activation and equipment fees are negotiated individually.",
+    "popular": "Most popular",
+    "choose": "Choose",
+    "save": "You save"
+  },
+  "AboutPage": {
+    "title": "About NETPLUS PETRICH",
+    "subtitle": "A local provider on a mission to bring fast, reliable connectivity to every home in Petrich.",
+    "storyTitle": "Our story",
+    "story": "NETPLUS was created with a single goal — to offer the people of Petrich the internet and television they deserve: fast, stable and with real, human support. We're a local company and we know the region, because we live here.",
+    "missionTitle": "Our mission",
+    "mission": "To build and maintain the best fiber network in Petrich and the region, focusing on service quality — not just price.",
+    "valuesTitle": "Our values",
+    "v1Title": "Local",
+    "v1Desc": "A local team that knows the region and is there when you need it.",
+    "v2Title": "Transparency",
+    "v2Desc": "Clear prices, real speeds and honest communication with no fine print.",
+    "v3Title": "Quality",
+    "v3Desc": "We invest in modern infrastructure (GPON) and continuously improve it.",
+    "stat1": "years in Petrich",
+    "stat2": "happy customers",
+    "stat3": "fiber network",
+    "stat4": "hours of support"
+  },
+  "ContactsPage": {
+    "title": "Contacts",
+    "subtitle": "Get in touch — by phone, email or through the form below.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "support": "Support",
+    "sales": "Sales",
+    "hours": "Working hours",
+    "hoursValue": "Mon–Fri 09:00–18:00 · On-call team 24/7",
+    "formTitle": "Send a message",
+    "formName": "Your name",
+    "formEmail": "Email",
+    "formPhone": "Phone",
+    "formSubject": "Subject",
+    "formMessage": "Message",
+    "formSubmit": "Send",
+    "formSuccess": "Thank you! Your message has been sent. We'll get back to you soon.",
+    "mapTitle": "How to find us"
+  },
+  "NewsPage": {
+    "title": "News",
+    "subtitle": "Promotions, maintenance notices and everything current about the NETPLUS network.",
+    "readMore": "Read more",
+    "back": "All news",
+    "published": "Published on",
+    "related": "Related news",
+    "notFound": "News article not found."
+  },
+  "RequestPage": {
+    "title": "Service request",
+    "subtitle": "Fill in the form and our team will contact you within one business day.",
+    "step1": "Your details",
+    "step2": "Address & service",
+    "step3": "Confirmation",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Installation address",
+    "service": "Desired service",
+    "serviceGpon": "Fiber internet (GPON)",
+    "serviceGdn": "Digital TV (GDN)",
+    "serviceUnitv": "Interactive TV (UNITV)",
+    "serviceCombo": "Combo (internet + TV)",
+    "notes": "Additional notes",
+    "submit": "Submit request",
+    "next": "Next",
+    "back": "Back",
+    "success": "Your request has been received!",
+    "successDesc": "We'll contact you at the provided phone number within one business day.",
+    "newRequest": "New request"
+  },
+  "Portal": {
+    "title": "Client portal",
+    "subtitle": "Access your services, requests and tickets — 24/7.",
+    "login": "Log in",
+    "loginDesc": "Sign in to your client portal.",
+    "register": "Register",
+    "registerDesc": "No account? Create one in 2 minutes.",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Log in",
+    "registerButton": "Create account",
+    "or": "or",
+    "comingSoon": "The client portal is under development.",
+    "comingSoonDesc": "Soon you'll be able to submit tickets, track requests and communicate with our team directly from here.",
+    "dashboard": "Dashboard",
+    "tickets": "Tickets",
+    "requests": "Requests",
+    "feedback": "Feedback",
+    "newTicket": "Submit a ticket",
+    "ticketSubject": "Subject",
+    "ticketCategory": "Category",
+    "ticketPriority": "Priority",
+    "ticketDescription": "Describe the problem",
+    "submitTicket": "Send ticket",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "urgent": "Urgent"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "desc": "The page you're looking for doesn't exist or has been moved.",
+    "home": "Back to home"
+  },
+  "Misc": {
+    "loading": "Loading...",
+    "speed": "Mbps",
+    "perMonth": "/month",
+    "currency": "€"
+  }
+}
