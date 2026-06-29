@@ -1,11 +1,9 @@
 // Prisma schema за НЕТПЮС ПЕТРИЧ
 //
-// Локална разработка: SQLite (file:./dev.db) — работи без инсталация.
-//
-// PRODUCTION (Vercel): преди деплой смени provider на "postgresql" и
-// задай DATABASE_URL към PostgreSQL. Migration SQL за Postgres е в:
-//   prisma/migrations/20260629000000_init/migration.sql
-// Пусни го веднъж след деплой (през Neon SQL Editor или prisma migrate).
+// Production: PostgreSQL (Vercel Postgres / Neon / Supabase)
+// Локална разработка: SQLite (file:./dev.db) — за това използвай
+//   схемата от branch 'dev-sqlite' или задай DATABASE_URL=file:./dev.db
+//   и provider="sqlite" временно.
 
 generator client {
   provider = "prisma-client-js"

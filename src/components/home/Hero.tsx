@@ -5,11 +5,15 @@ import { motion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
 import {
   ArrowRightIcon,
-  BoltIcon,
-  ShieldIcon,
   FiberIcon,
   GaugeIcon,
+  ShieldIcon,
+  BoltIcon,
 } from "@/components/icons/Icons";
+
+// Spring physics според skill-а: stiffness 100, damping 20 — premium, weighty feel
+const spring = { type: "spring" as const, stiffness: 100, damping: 20 };
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
   const t = useTranslations("Hero");
@@ -19,62 +23,34 @@ export function Hero() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.09, delayChildren: 0.05 },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
   const item = {
     hidden: { opacity: 0, y: 24 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-    },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
   };
 
-  const stats = [
-    { value: t("stat1Value"), label: t("stat1Label") },
-    { value: t("stat2Value"), label: t("stat2Label") },
-    { value: t("stat3Value"), label: t("stat3Label") },
-  ];
-
-  // Усещане за "скорост" — плаващи частици
-  const floats = [
-    { Icon: FiberIcon, top: "18%", left: "8%", delay: 0 },
-    { Icon: GaugeIcon, top: "62%", left: "12%", delay: 1.2 },
-    { Icon: BoltIcon, top: "28%", left: "88%", delay: 0.6 },
-    { Icon: ShieldIcon, top: "70%", left: "82%", delay: 1.8 },
+  // 3 ключови предимства (вместо hero-metric template, забранен от skill-а)
+  const pillars = [
+    { Icon: BoltIcon, label: t("stat1Value"), sub: t("stat1Label") },
+    { Icon: ShieldIcon, label: t("stat2Value"), sub: t("stat2Label") },
+    { Icon: FiberIcon, label: t("stat3Value"), sub: t("stat3Label") },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-ink-900 text-white bg-noise">
+    <section className="relative overflow-hidden bg-ink-950 text-white bg-noise">
       {/* Mesh градиент фон */}
-      <div className="absolute inset-0 bg-brand-gradient" />
-      <div className="absolute inset-0 bg-grid-dark opacity-50" />
+      <div className="absolute inset-0 bg-brand-gradient opacity-90" />
+      <div className="absolute inset-0 bg-grid-dark opacity-40" />
 
-      {/* Плаващи икони — символизират мрежови възли */}
-      {floats.map((f, i) => (
-        <motion.div
-          key={i}
-          className="absolute hidden text-brand-300/20 lg:block"
-          style={{ top: f.top, left: f.left }}
-          animate={{ y: [0, -16, 0] }}
-          transition={{
-            duration: 6,
-            delay: f.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <f.Icon className="h-10 w-10" />
-        </motion.div>
-      ))}
-
-      <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:py-32">
+        {/* ЛЯВО: съдържание (асиметрично, не центрирано) */}
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="mx-auto max-w-3xl text-center"
+          className="lg:col-span-7"
         >
           {/* Badge */}
           <motion.span
@@ -88,43 +64,33 @@ export function Hero() {
             {t("badge")}
           </motion.span>
 
-          {/* Заглавие — по-голямо, по-смело */}
+          {/* Заглавие — ляво подравнено, inline image typography */}
           <motion.h1
             variants={item}
-            className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.75rem]"
+            className="mt-6 max-w-2xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]"
           >
             {t("title").replace(t("titleHighlight"), "")}
-            <span className="relative whitespace-nowrap text-accent-300">
-              {t("titleHighlight")}
-              <svg
-                className="absolute -bottom-2 left-0 w-full text-accent-400/70"
-                viewBox="0 0 200 8"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 5.5C40 2.5 160 2.5 198 5.5"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
+            {/* Inline визуален елемент — "окно" в заглавието (signature техника) */}
+            <span className="relative inline-flex items-center align-middle">
+              <span className="mx-1 inline-flex h-12 w-20 overflow-hidden rounded-xl bg-accent-500 align-middle sm:h-16 sm:w-28">
+                <span className="flex h-full w-full items-center justify-center bg-grid-dark">
+                  <FiberIcon className="h-6 w-6 text-white sm:h-8 sm:w-8" />
+                </span>
+              </span>
+              <span className="text-accent-300">{t("titleHighlight")}</span>
             </span>
           </motion.h1>
 
-          {/* Подзаглавие — контролирана ширина за четимост */}
+          {/* Подзаглавие */}
           <motion.p
             variants={item}
-            className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-100/80"
+            className="mt-6 max-w-xl text-lg leading-relaxed text-ink-100/80"
           >
             {t("subtitle")}
           </motion.p>
 
-          {/* CTA бутони */}
-          <motion.div
-            variants={item}
-            className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          >
+          {/* Single CTA (skill: максимум 1 primary CTA) */}
+          <motion.div variants={item} className="mt-9">
             <ButtonLink
               href="/request"
               variant="primary"
@@ -134,35 +100,44 @@ export function Hero() {
               {t("ctaPrimary")}
               <ArrowRightIcon className="h-5 w-5" />
             </ButtonLink>
-            <button
-              type="button"
-              className="glass inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/15 sm:w-auto"
-            >
-              {t("ctaSecondary")}
-            </button>
           </motion.div>
         </motion.div>
 
-        {/* Статистики — glassmorphism карти */}
+        {/* ДЯСНО: визуална колона с 3 стълба */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ ...spring, delay: 0.4 }}
+          className="lg:col-span-5"
         >
-          {stats.map((s, i) => (
-            <div key={s.label} className="glass rounded-2xl p-6 text-center">
-              <div
-                className="text-3xl font-extrabold text-white sm:text-4xl"
-                style={{ fontFamily: "var(--font-display)" }}
+          <div className="space-y-3">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ ...spring, delay: 0.6 + i * 0.12 }}
+                className="glass group flex items-center gap-4 rounded-2xl p-5"
               >
-                {s.value}
-              </div>
-              <div className="mt-1.5 text-xs font-medium uppercase tracking-[0.14em] text-ink-100/60">
-                {s.label}
-              </div>
-            </div>
-          ))}
+                <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-accent-500/20 text-accent-300 transition-transform group-hover:scale-110">
+                  <p.Icon className="h-6 w-6" />
+                </span>
+                <div>
+                  <div
+                    className="text-xl font-bold text-white"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {p.label}
+                  </div>
+                  <div className="text-xs font-medium uppercase tracking-[0.12em] text-ink-100/60">
+                    {p.sub}
+                  </div>
+                </div>
+                {/* Perpetual micro-interaction: shimmer pulse */}
+                <span className="ml-auto h-2 w-2 animate-pulse rounded-full bg-accent-400/60" />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

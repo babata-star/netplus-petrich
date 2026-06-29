@@ -2,17 +2,19 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Inter, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SessionProvider } from "@/components/providers/SessionProvider";
 import "../globals.css";
 
-const inter = Inter({
+// Manrope за body — geometric sans, поддържа кирилица, разрешен от skill-а
+const inter = Manrope({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext", "cyrillic"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const jakarta = Manrope({
