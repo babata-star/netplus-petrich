@@ -1,15 +1,16 @@
 // Prisma schema за НЕТПЮС ПЕТРИЧ
 //
-// За локална разработка ползваме SQLite (файлова база — без инсталация).
-// За production променете provider на "postgresql" и DATABASE_URL.
-// Схемата е идентична — само datasource се променя.
+// Production: PostgreSQL (Vercel Postgres / Neon / Supabase)
+// Локална разработка: SQLite (file:./dev.db) — за това използвай
+//   схемата от branch 'dev-sqlite' или задай DATABASE_URL=file:./dev.db
+//   и provider="sqlite" временно.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
