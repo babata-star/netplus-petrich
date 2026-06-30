@@ -20,7 +20,7 @@ export function CtaSection() {
       <div className="relative mx-auto flex max-w-4xl flex-col items-center px-5 text-center text-white sm:px-8">
         <span className="glass mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold">
           <span className="h-1.5 w-1.5 rounded-full bg-accent-400" />
-          НЕТПЮС ПЕТРИЧ
+          НЕТПЛЮС ПЕТРИЧ
         </span>
         <h2 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
           {t("title")}

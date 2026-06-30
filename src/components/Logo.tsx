@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 /**
- * Лого на НЕТПЮС.
+ * Лого на НЕТПЛЮС.
  * Концепция: стилизирана буква "N" от три възела на оптична мрежа (GPON),
  * с вграден плюс (+) символ — "net" + "plus".
  */
@@ -11,7 +11,7 @@ export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
       viewBox="0 0 48 48"
       className={className}
       role="img"
-      aria-label="НЕТПЮС"
+      aria-label="НЕТПЛЮС"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -60,13 +60,13 @@ export function Logo({
     <Link
       href={href}
       className={`group inline-flex items-center gap-2.5 ${className}`}
-      aria-label="НЕТПЮС ПЕТРИЧ — начало"
+      aria-label="НЕТПЛЮС ПЕТРИЧ — начало"
     >
       <LogoMark className="h-9 w-9 transition-transform duration-300 group-hover:scale-105" />
       {withText && (
         <span className="flex flex-col leading-none">
           <span className="text-lg font-extrabold tracking-tight text-ink-900">
-            НЕТПЮС
+            НЕТПЛЮС
           </span>
           <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand-600">
             Петрич

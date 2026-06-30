@@ -1,4 +1,4 @@
-// Prisma schema за НЕТПЮС ПЕТРИЧ
+// Prisma schema за НЕТПЛЮС ПЕТРИЧ
 //
 // Production: PostgreSQL (Vercel Postgres / Neon / Supabase)
 // Локална разработка: SQLite (file:./dev.db) — за това използвай

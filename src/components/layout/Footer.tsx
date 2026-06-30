@@ -13,7 +13,7 @@ import {
 import { telHref } from "@/lib/utils";
 
 export const COMPANY = {
-  name: "НЕТПЮС ПЕТРИЧ",
+  name: "НЕТПЛЮС ПЕТРИЧ",
   phone: "0882 888 388",
   email: "netplus.petrich@gmail.com",
   supportEmail: "netplus.petrich@gmail.com",
@@ -56,7 +56,7 @@ export function Footer() {
               <LogoMark className="h-10 w-10" />
               <div className="flex flex-col leading-none">
                 <span className="text-lg font-extrabold tracking-tight text-white">
-                  НЕТПЮС
+                  НЕТПЛЮС
                 </span>
                 <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand-400">
                   Петрич

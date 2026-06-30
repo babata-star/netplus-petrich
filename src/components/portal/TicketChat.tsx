@@ -85,7 +85,7 @@ export function TicketChat({
               >
                 {isStaff && (
                   <div className="mb-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-brand-600">
-                    Екип НЕТПЮС
+                    Екип НЕТПЛЮС
                   </div>
                 )}
                 <p className="whitespace-pre-wrap">{m.body}</p>

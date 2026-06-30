@@ -32,7 +32,7 @@ export function AdminSidebar({ userName }: { userName?: string | null }) {
           <LogoMark className="h-9 w-9" />
           <div>
             <div className="text-sm font-bold">Админ панел</div>
-            <div className="text-xs text-ink-300">НЕТПЮС</div>
+            <div className="text-xs text-ink-300">НЕТПЛЮС</div>
           </div>
         </div>
         <div className="mt-4 border-t border-ink-700 pt-3">

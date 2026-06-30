@@ -1,4 +1,4 @@
-# DESIGN — НЕТПЮС ПЕТРИЧ
+# DESIGN — НЕТПЛЮС ПЕТРИЧ
 
 ## Color Strategy
 Restrained с един акцент. Тинтнати неутрални към синьо. OKLCH-мислене.
