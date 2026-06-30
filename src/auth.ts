@@ -1,15 +1,17 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
 /**
  * NextAuth v5 конфигурация.
- * Credentials provider — имейл + парола срещу базата (bcrypt).
+ *
+ * Credentials provider + JWT session (без PrismaAdapter).
+ * PrismaAdapter е за OAuth providers и създава конфликт с Credentials
+ * при JWT session — причинява "Server error" при login.
+ * Тук зареждаме потребителя директно от базата в authorize().
  */
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   pages: {
     signIn: "/portal/login",
